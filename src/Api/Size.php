@@ -30,7 +30,12 @@ class Size extends AbstractApi
      */
     public function getAll()
     {
-        $sizes = $this->get('sizes');
+        $sizes = $this->get(
+            'sizes',
+            [
+                'per_page' => 200,
+            ]
+        );
 
         return \array_map(function ($size) {
             return new SizeEntity($size);
